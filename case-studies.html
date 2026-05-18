@@ -82,8 +82,8 @@
   /* ----- Case studies grid ----- */
   .cs-section{padding:64px 0 120px;background:var(--paper);}
   .cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .cs-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s;}
-  .cs-card:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 8px 24px rgba(10,14,20,0.06);}
+  .cs-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;}
+  .cs-card:hover{border-color:var(--ink);box-shadow:0 8px 24px rgba(10,14,20,0.06);transform:translateY(-2px);}
   .cs-card-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(10,14,20,0.025);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);}
   .cs-card-header .cs-id{color:var(--ink);font-weight:600;}
   .cs-card-header .cs-tag{display:inline-flex;align-items:center;gap:6px;}
@@ -920,6 +920,13 @@ function bindCards(){
 backdrop.addEventListener('click', closeDrawer);
 closeBtn.addEventListener('click', closeDrawer);
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
+// Click anywhere outside the drawer panel closes it (extra safety net)
+document.addEventListener('click', e => {
+  if(!drawer.classList.contains('is-open')) return;
+  if(drawer.contains(e.target)) return; // clicked inside drawer — ignore
+  if(e.target.closest('.cs-card,[data-case],.filter-chip')) return; // ignore card/filter clicks
+  closeDrawer();
+});
 
 /* ============================================================
    FILTERS

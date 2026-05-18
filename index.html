@@ -1124,6 +1124,14 @@ const TESTIMONIALS = [
       if(el.scrollWidth<=el.clientWidth)return;
       if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
       if(e.deltaY===0)return;
+      // Release the wheel back to the page when the carousel is already at the
+      // boundary in the direction the user is scrolling — otherwise the user
+      // gets stuck on the carousel and the page can't scroll up/down past it.
+      // Threshold accounts for scroll-snap pinning scrollLeft to the padding.
+      const max=el.scrollWidth-el.clientWidth;
+      const atStart=el.scrollLeft<=48;
+      const atEnd=el.scrollLeft>=max-48;
+      if((e.deltaY<0&&atStart)||(e.deltaY>0&&atEnd))return;
       e.preventDefault();
       el.scrollBy({left:e.deltaY,behavior:'auto'});
     },{passive:false});
@@ -1528,13 +1536,9 @@ document.addEventListener('visibilitychange', () => {
     const step=()=>Math.max(el.clientWidth*0.85,200);
     prev.addEventListener('click',()=>el.scrollBy({left:-step(),behavior:'smooth'}));
     next.addEventListener('click',()=>el.scrollBy({left:step(),behavior:'smooth'}));
-    // Convert vertical wheel to horizontal scroll on the carousel
-    el.addEventListener('wheel',e=>{
-      if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
-      if(e.deltaY===0)return;
-      e.preventDefault();
-      el.scrollBy({left:e.deltaY,behavior:'auto'});
-    },{passive:false});
+    // Wheel-to-horizontal scroll is handled by the universal handler above
+    // (with proper boundary release). A duplicate handler here without that
+    // check trapped the page scroll on the carousel and made it appear blank.
   });
 })();
 </script>

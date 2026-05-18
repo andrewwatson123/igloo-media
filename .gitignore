@@ -3,3 +3,10 @@ images/.DS_Store
 .claude/
 *.log
 node_modules/
+
+# Dev-only assets (not referenced by site)
+images/Mosaic/
+build_mosaic.py
+
+# Source video (do not commit — re-encoded to hero.mp4)
+images/Trimmed.mov

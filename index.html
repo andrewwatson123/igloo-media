@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Igloo Media — Case Studies Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================
+     IGLOO MEDIA — CASE STUDIES (Listing + Drawer)
+     ===================================================================
+     One embed for the entire /case-studies page on Webflow.
+     Edit the CASE_STUDIES array at the bottom of <script> to add/edit
+     entries. Drop images into ./images/ (or paste Webflow CDN URLs).
+=================================================================== -->
+
+<style>
+  .ig * { box-sizing: border-box; margin: 0; padding: 0; }
+  .ig {
+    --ig-blue: #01a0f3;
+    --ig-ink: #0a0e14;
+    --ig-paper: #faf8f4;        /* warm magazine off-white */
+    --ig-muted: #5b6470;
+    --ig-line: #e6e9ee;
+    --ig-radius: 16px;
+    --ig-max: 1320px;
+    font-family: 'Outfit', 'Manrope', system-ui, -apple-system, sans-serif;
+    color: var(--ig-ink);
+    background: var(--ig-paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ig img { display: block; max-width: 100%; height: auto; }
+  .ig__wrap { max-width: var(--ig-max); margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Editorial header ---------- */
+  .ig__header { padding: 120px 0 72px; }
+  .ig__eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ig-ink); margin-bottom: 32px;
+  }
+  .ig__eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ig-blue);
+  }
+  .ig__page-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: clamp(48px, 7vw, 110px);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    margin-bottom: 32px;
+    max-width: 1100px;
+  }
+  .ig__page-title em {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ig-blue);
+  }
+  .ig__intro {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: var(--ig-muted);
+    max-width: 620px;
+    line-height: 1.5;
+  }
+
+  /* ---------- Grid (magazine rhythm) ---------- */
+  .ig__grid {
+    padding: 32px 0 140px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px 24px;
+  }
+  .ig__card {
+    position: relative;
+    grid-column: span 12;
+    background: var(--ig-ink);
+    border-radius: var(--ig-radius);
+    overflow: hidden;
+    cursor: pointer;
+    isolation: isolate;
+    transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .ig__card--half { grid-column: span 6; }
+  .ig__card:hover { transform: translateY(-4px); }
+  .ig__card-image-wrap {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .ig__card-image {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s cubic-bezier(.2,.7,.2,1);
+  }
+  .ig__card:hover .ig__card-image { transform: scale(1.04); }
+  .ig__card-image-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,20,0.05) 0%, rgba(10,14,20,0.55) 60%, rgba(10,14,20,0.85) 100%);
+  }
+  .ig__card-num {
+    position: absolute; top: 32px; right: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(80px, 10vw, 160px);
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    font-weight: 400;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .ig__card-inner {
+    position: relative; z-index: 2;
+    padding: 56px 48px;
+    color: #fff;
+    min-height: 560px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .ig__card--half .ig__card-inner { min-height: 480px; padding: 40px 36px; }
+  .ig__card-tags {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  }
+  .ig__card-tag-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--ig-blue);
+  }
+  .ig__card-tags span:not(.ig__card-tag-dot)::after {
+    content: '·'; margin-left: 12px; opacity: 0.6;
+  }
+  .ig__card-tags span:not(.ig__card-tag-dot):last-child::after { content: ''; }
+  .ig__card-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+  }
+  .ig__card--half .ig__card-title { font-size: clamp(32px, 3.4vw, 52px); }
+  .ig__card-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.18);
+    margin-bottom: 28px;
+  }
+  .ig__card--half .ig__card-stats { grid-template-columns: repeat(2, 1fr); }
+  .ig__card-stat-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .ig__card-stat-val {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(22px, 2.2vw, 32px); font-weight: 400; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .ig__card-stat-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .ig__card-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #fff;
+    display: inline-flex; align-items: center; gap: 14px;
+    padding-top: 4px;
+  }
+  .ig__card-cta::before { content: '>'; opacity: 0.6; }
+  .ig__card-cta-arrow {
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .ig__card:hover .ig__card-cta-arrow { transform: translateX(8px); }
+
+  /* ---------- Drawer ---------- */
+  .ig__backdrop {
+    position: fixed; inset: 0;
+    background: rgba(10,14,20,0.55);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 90;
+    backdrop-filter: blur(2px);
+  }
+  .ig__backdrop.is-open { opacity: 1; pointer-events: auto; }
+  .ig__drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(720px, 92vw);
+    background: #fff;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .ig__drawer.is-open { transform: translateX(0); }
+  .ig__drawer-close {
+    position: sticky; top: 20px; left: calc(100% - 60px); float: right;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid var(--ig-line);
+    cursor: pointer; z-index: 5;
+    display: grid; place-items: center;
+    font-size: 18px; color: var(--ig-ink);
+    margin: 20px 20px 0 0;
+    transition: background 0.2s ease;
+  }
+  .ig__drawer-close:hover { background: var(--ig-ink); color: #fff; }
+  .ig__drawer-hero {
+    width: 100%; aspect-ratio: 16/10; object-fit: cover;
+    margin-top: -60px;
+  }
+  .ig__drawer-body { padding: 40px 48px 60px; }
+  .ig__drawer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ig-muted);
+    margin-bottom: 16px;
+  }
+  .ig__drawer-meta .dot { color: var(--ig-blue); margin: 0 6px; }
+  .ig__drawer-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: clamp(40px, 4.5vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 36px;
+  }
+  .ig__drawer-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--ig-blue);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .ig__drawer-stat {
+    padding: 22px 18px;
+    border-right: 1px solid rgba(1,160,243,0.18);
+    background: rgba(1,160,243,0.04);
+  }
+  .ig__drawer-stat:last-child { border-right: 0; }
+  .ig__drawer-stat-val {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: clamp(22px, 2.2vw, 30px);
+    color: var(--ig-blue); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .ig__drawer-stat-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ig-muted);
+  }
+  .ig__drawer-includes {
+    display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    background: var(--ig-paper);
+    border-radius: 10px;
+    margin-bottom: 48px;
+  }
+  .ig__drawer-includes-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ig-muted);
+    margin-right: 4px;
+  }
+  .ig__pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--ig-line);
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px; font-weight: 500;
+  }
+  .ig__pill::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ig-blue);
+  }
+  .ig__pill:nth-child(3n)::before { background: #f59e0b; }
+  .ig__pill:nth-child(3n+1)::before { background: var(--ig-blue); }
+  .ig__pill:nth-child(3n+2)::before { background: #6366f1; }
+  .ig__drawer-section { margin-bottom: 36px; }
+  .ig__drawer-section h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ig-muted);
+    margin-bottom: 14px;
+  }
+  .ig__drawer-section p {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px; line-height: 1.65;
+    color: var(--ig-ink);
+  }
+  .ig__drawer-section p + p { margin-top: 12px; }
+  .ig__drawer-services {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px;
+  }
+  .ig__chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid var(--ig-line); border-radius: 4px;
+    color: var(--ig-ink);
+  }
+  .ig__drawer-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 32px; border-radius: 999px;
+    background: var(--ig-ink); color: #fff;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+    transition: background 0.2s ease;
+  }
+  .ig__drawer-cta:hover { background: var(--ig-blue); }
+  .ig__drawer-cta-arrow { font-family: 'JetBrains Mono', monospace; }
+
+  body.ig-locked { overflow: hidden; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .ig__wrap { padding: 0 20px; }
+    .ig__header { padding: 80px 0 48px; }
+    .ig__grid { padding: 16px 0 80px; gap: 20px; }
+    .ig__card--half { grid-column: span 12; }
+    .ig__card-inner { padding: 36px 24px; min-height: 460px; }
+    .ig__card--half .ig__card-inner { padding: 32px 22px; min-height: 420px; }
+    .ig__card-num { top: 20px; right: 24px; }
+    .ig__card-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 18px; }
+    .ig__drawer-body { padding: 24px 24px 48px; }
+    .ig__drawer-stats { grid-template-columns: repeat(2, 1fr) !important; }
+    .ig__drawer-stat:nth-child(2) { border-right: 0; }
+    .ig__drawer-stat:nth-child(1), .ig__drawer-stat:nth-child(2) {
+      border-bottom: 1px solid rgba(1,160,243,0.18);
+    }
+  }
+</style>
+
+<section class="ig">
+
+  <header class="ig__header">
+    <div class="ig__wrap">
+      <span class="ig__eyebrow">Case Studies — Selected work</span>
+      <h1 class="ig__page-title">Brands we've helped <em>scale.</em></h1>
+      <p class="ig__intro">Real numbers. Real growth. Each panel below is a living case study — click any brand to read the full story.</p>
+    </div>
+  </header>
+
+  <div class="ig__wrap">
+    <div class="ig__grid" id="ig-grid"><!-- rendered by JS --></div>
+  </div>
+
+</section>
+
+<!-- Drawer -->
+<div class="ig__backdrop" id="ig-backdrop"></div>
+<aside class="ig ig__drawer" id="ig-drawer" aria-hidden="true">
+  <button class="ig__drawer-close" id="ig-drawer-close" aria-label="Close">×</button>
+  <div id="ig-drawer-content"></div>
+</aside>
+
+<script>
+(function () {
+  // ============================================================
+  // CASE STUDY DATA — edit / add entries here
+  // ============================================================
+  // layout: 'wide' (full row) or 'half' (2 per row)
+  // ============================================================
+  const CASE_STUDIES = [
+    {
+      id: 'delta-children',
+      layout: 'wide',
+      name: 'Delta Children',
+      heroImage: 'images/delta-children.png',
+      tags: ['Baby & Kids', 'Vendor Central', 'Amazon US'],
+      cardStats: [
+        { key: 'ROAS_IM', val: '+179%',  lbl: 'ROAS Improvement' },
+        { key: 'ROAS_PK', val: '29.11×', lbl: 'Peak Weekly ROAS' },
+        { key: 'REV_GRW', val: '+370%',  lbl: 'Ad Revenue Growth' },
+        { key: 'TACS_AV', val: '<1%',    lbl: 'Avg TACoS' }
+      ],
+      drawerMeta: ['Baby & Kids', 'Vendor Central', 'Amazon US', '13 months'],
+      drawerStats: [
+        { val: '+179%',  lbl: 'ROAS Improvement' },
+        { val: '29.11×', lbl: 'Peak Weekly ROAS' },
+        { val: '+370%',  lbl: 'Ad Revenue Growth' },
+        { val: '<1%',    lbl: 'Avg TACoS' }
+      ],
+      includes: ['Amazon PPC', 'Seller Central', 'Vendor Central', 'DSP Solutions', 'Listing Optimization'],
+      challenge: 'A children\'s furniture giant with millions in weekly Amazon Vendor Central revenue and a 99%+ organic share — but an underperforming ad program. Ad ROAS sat at 5.47× with basic campaign architecture, no seasonal scaling framework, and ~350 ad conversions per week. The mandate: transform paid into a high-performance growth engine without disturbing the dominant organic base.',
+      approach: 'A four-phase, discipline-first methodology. Phase 1 audited every campaign and rebuilt architecture from the ground up — restructured bidding, aggressive negative keyword lists, ROAS lifted to 6.59× in 8 weeks with no extra spend. Phase 2 compounded efficiency to 8.65× monthly ROAS while preparing day-parting and budget frameworks for Prime Day. Phase 3 absorbed an 8× Prime Day spend spike at 6.33× ROAS, snapping back to 9.85× the following week. Phase 4 scaled into BFCM with a 10× budget increase, layered DSP retargeting, and held ROAS between 12× and 27× for six straight weeks.',
+      result: 'Across 13 months: Ad ROAS climbed from 5.47× to a 15.26× current standard — a 179% improvement. Peak week hit 29.11× in January 2026. Ad revenue grew 370% while TACoS never exceeded 1.6% even at Prime Day and BFCM peak. Weekly conversions scaled from 350 to 13,000+. Organic revenue share held above 90% throughout, proving paid was incremental — not cannibalistic. Q1 2026 sustained 13×–20× ROAS, confirming the gains were structural, not seasonal.',
+      services: ['Vendor Central PPC Rebuild', 'Full-Funnel Architecture', 'Negative Keyword System', 'BFCM & Prime Day Scaling', 'DSP Retargeting', 'Listing Optimization']
+    },
+    {
+      id: 'medistik',
+      layout: 'half',
+      name: 'Medistik',
+      heroImage: 'images/medistik.png',
+      tags: ['Health & Wellness', 'Pain Relief', 'Amazon Canada'],
+      cardStats: [
+        { key: 'ROI_GRW', val: '+42%', lbl: 'ROI Growth' },
+        { key: 'MGN_GAP', val: '+21%', lbl: 'Margin Gained' },
+        { key: 'ACOS_AV', val: '17%',  lbl: 'Avg Real ACoS' },
+        { key: 'PPC_GRW', val: '+23%', lbl: 'PPC Sales Growth' }
+      ],
+      drawerMeta: ['Health & Wellness', 'Pain Relief', 'Amazon Canada', '15 months'],
+      drawerStats: [
+        { val: '+42%', lbl: 'ROI Growth' },
+        { val: '+21%', lbl: 'Margin Gained' },
+        { val: '17%',  lbl: 'Avg Real ACoS' },
+        { val: '+23%', lbl: 'PPC Sales Growth' }
+      ],
+      includes: ['Amazon PPC', 'Seller Central', 'DSP Solutions', 'Listing Optimization'],
+      challenge: 'A Top-3 brand in Amazon Canada\'s pain relief category with strong fundamentals — but operating below its margin potential. The category was expanding 41% year-over-year in impression volume while most of 8 tracked competitors lost ground. The mandate: turn category growth into structural profitability, measured against true cost — every Amazon fee, shipping cost, and unit of COGS.',
+      approach: 'Six strategic levers running in parallel. A 17-month SQP deep dive across 17,000+ search queries built the intelligence foundation. Full-funnel campaign architecture assigned each ad type a defined role — awareness, retargeting, brand defense, conquest. A Real ACoS profitability framework measured every dollar against true PPC revenue. Monthly competitor tracking exploited pullback windows to capture impressions at lower CPCs. A rolling negative keyword system protected margin. Subscribe & Save campaigns converted trial into recurring revenue.',
+      result: 'Across 15 months: ROI grew from 170% to a peak of 242% (+42%). Profit margin improved from 26.3% to 31.8% (+21%). Real ACoS averaged 17% — sub-20% in 13 of 15 months. PPC sales grew 23% through structure, not added spend. Subscribe & Save subscribers grew 23%, building a compounding low-ACoS revenue base. The system Igloo built keeps working after the engagement ends.',
+      services: ['SQP Deep Dive (17 mo)', 'Full-Funnel PPC Architecture', 'Real ACoS Framework', 'Negative Keyword System', 'Subscribe & Save Engine', 'Competitor Intelligence']
+    },
+    {
+      id: 'duradry',
+      layout: 'half',
+      name: 'Duradry',
+      heroImage: 'images/duradry.png',
+      tags: ['Personal Care', 'Seller Central', 'Amazon US'],
+      cardStats: [
+        { key: 'ACOS_BS', val: '11.6%', lbl: 'Best ACoS' },
+        { key: 'ROAS_PK', val: '8.61×', lbl: 'Peak Blended ROAS' },
+        { key: 'BRD_SHR', val: '+34%',  lbl: 'Brand Share Growth' },
+        { key: 'ASIN_CT', val: '19',    lbl: 'Active ASINs' }
+      ],
+      drawerMeta: ['Personal Care', 'Seller Central', 'Amazon US', '12 months'],
+      drawerStats: [
+        { val: '11.6%', lbl: 'Best ACoS' },
+        { val: '8.61×', lbl: 'Peak Blended ROAS' },
+        { val: '+34%',  lbl: 'Brand Share Growth' },
+        { val: '19',    lbl: 'Active ASINs' }
+      ],
+      includes: ['Amazon PPC', 'Listing Optimization', 'DSP Solutions'],
+      challenge: 'A clinically focused sweat-management brand with 19 ASINs spanning sticks, 3-step systems, sprays, and powders — and proven product-market fit backed by 7,500+ monthly branded searches. But ad spend was high, ACoS was running at 45.7%, TACoS sat at 21.5%, and organic only accounted for 53% of revenue. The account was over-dependent on paid. The question: could we unlock the efficiency a brand this strong deserved?',
+      approach: 'A four-phase, discipline-first methodology. Phase 1 audited every campaign, search term, and placement across all 19 ASINs — negative keyword lists built from scratch, campaign architecture reorganized by product category (sticks, systems, sprays, powders). Phase 2 eliminated nearly half the ad budget; revenue held within 6% because the cut dollars were pure waste. Phase 3 launched Amazon DSP, adding programmatic display and retargeting; peaked at 4.01× DSP ROAS without cannibalizing Sponsored Products. Phase 4 shifted to brand defense — branded impression share climbed to 63.1%, absorbing Q1 2026\'s competitive Personal Care spike without efficiency collapse.',
+      result: 'Across 12 months: ACoS improved from 45.7% to a best of 11.6%. Blended ROAS peaked at 8.61× (category norm is 3–4×). Ad spend reduced 42% during the peak efficiency phase while total revenue held within 6%. Branded impression share grew 34% (47.2% → 63.1%) — Duradry now owns nearly two-thirds of its own branded SERP. DSP launched and scaled to 4.01× peak ROAS. Organic revenue share climbed from 53% to a sustained 56%+, proving paid fueled organic rather than replacing it. 71,000+ attributed conversions across the engagement.',
+      services: ['Portfolio Audit (19 ASINs)', 'Campaign Restructure by Category', 'Negative Keyword System', 'DSP Launch & Retargeting', 'Brand Defense (Impression Share)', 'Listing Optimization']
+    },
+    {
+      id: 'teaspressa',
+      layout: 'wide',
+      name: 'Teaspressa',
+      heroImage: 'images/teaspressa.png',
+      tags: ['Food & Beverage', 'Luxury DTC', 'Amazon US'],
+      cardStats: [
+        { key: 'REV_YOY', val: '+214%', lbl: 'Revenue YoY' },
+        { key: 'ACOS_RD', val: '-28%',  lbl: 'ACoS Reduction' },
+        { key: 'ROAS_AV', val: '4.2×',  lbl: 'ROAS' }
+      ],
+      drawerMeta: ['Food & Beverage', 'Luxury DTC', 'Amazon US'],
+      drawerStats: [
+        { val: '+214%', lbl: 'Revenue YoY' },
+        { val: '-28%',  lbl: 'ACoS Reduction' },
+        { val: '4.2×',  lbl: 'ROAS' }
+      ],
+      includes: ['Amazon PPC', 'Listing Optimization', 'Brand Store'],
+      challenge: 'A luxury artisan tea brand with strong DTC presence but minimal Amazon footprint. PPC was running at 48% ACoS with no structure — defensive spend on branded terms was crowding out true acquisition, and the listing suite read more like a wholesale catalogue than a luxury experience.',
+      approach: 'We rebuilt the entire listing suite — keyword architecture, A+ Premium content, and a flagship Brand Store designed around the artisan ritual rather than SKU variants. PPC was restructured across three campaign types (Sponsored Products / Brands / Display) with separate budgets, day-parting, and dedicated negative keyword lists per archetype.',
+      result: 'Revenue grew 214% year-over-year. ACoS dropped from 48% to 20.6% within 90 days. ROAS stabilised at 4.2× across a tripled spend base. Branded search volume lifted alongside paid efficiency, confirming the listing rebuild was driving organic discovery — not just cleaning up existing demand.',
+      services: ['Listing Optimisation', 'A+ Premium Content', 'PPC Architecture', 'Brand Store Build', 'Sponsored Brand Video']
+    },
+    {
+      id: 'hugz',
+      layout: 'wide',
+      name: 'Hugz',
+      heroImage: 'images/hugz.png',
+      tags: ['Baby & Toddler', 'Seller Central', 'Amazon US'],
+      cardStats: [
+        { key: 'REV_YOY', val: '+167%', lbl: 'Revenue YoY' },
+        { key: 'CAT_RNK', val: 'Top 10', lbl: 'Category Rank' },
+        { key: 'CVR_LFT', val: '+52%',  lbl: 'CVR Lift' }
+      ],
+      drawerMeta: ['Baby & Toddler', 'Seller Central', 'Amazon US'],
+      drawerStats: [
+        { val: '+167%', lbl: 'Revenue YoY' },
+        { val: 'Top 10', lbl: 'Category Rank' },
+        { val: '+52%',  lbl: 'CVR Lift' }
+      ],
+      includes: ['Amazon PPC', 'Listing Optimization', 'Brand Store'],
+      challenge: 'Emerging baby and toddler brand entering a competitive category with established players and limited review history. Cold-start dynamics meant CPCs were high, conversion was unproven, and the catalog needed to earn trust before it could earn rank.',
+      approach: 'Full listing overhaul with lifestyle imagery and A+ Premium content positioning the weighted plush as a calming-aid product, not a toy. Structured PPC launch with category and competitor targeting tiered by intent — auto-discovery → manual refinement → defensive — and a dedicated Brand Store that converted browse into multi-unit sessions.',
+      result: 'Revenue grew 167% year-over-year. The flagship SKU reached Top 10 in its category within 4 months of activation. Conversion rate lifted 52% post-listing rebuild. Review velocity tripled, compounding rank gains and reducing CPC dependency over the second half of the engagement.',
+      services: ['Listing Optimisation', 'A+ Premium', 'PPC Launch', 'Creative Testing', 'Brand Store']
+    }
+  ];
+
+  // ============================================================
+  // RENDER GRID
+  // ============================================================
+  const grid = document.getElementById('ig-grid');
+  grid.innerHTML = CASE_STUDIES.map((c, i) => `
+    <article class="ig__card ig__card--${c.layout}" data-case="${c.id}" tabindex="0" role="button" aria-label="View ${c.name} case study">
+      <div class="ig__card-image-wrap">
+        <img class="ig__card-image" src="${c.heroImage}" alt="${c.name}" loading="lazy" />
+      </div>
+      <div class="ig__card-num">${String(i + 1).padStart(2, '0')}</div>
+      <div class="ig__card-inner">
+        <div class="ig__card-tags">
+          <span class="ig__card-tag-dot"></span>
+          ${c.tags.map(t => `<span>${t}</span>`).join('')}
+        </div>
+        <h2 class="ig__card-title">${c.name}</h2>
+        <div class="ig__card-stats" style="grid-template-columns: repeat(${c.cardStats.length}, 1fr);">
+          ${c.cardStats.map(s => `
+            <div>
+              <div class="ig__card-stat-key">${s.key}</div>
+              <div class="ig__card-stat-val">${s.val}</div>
+              <div class="ig__card-stat-lbl">${s.lbl}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="ig__card-cta">
+          View Case
+          <span class="ig__card-cta-arrow">—&nbsp;&rarr;</span>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  // ============================================================
+  // DRAWER
+  // ============================================================
+  const drawer = document.getElementById('ig-drawer');
+  const backdrop = document.getElementById('ig-backdrop');
+  const closeBtn = document.getElementById('ig-drawer-close');
+  const content = document.getElementById('ig-drawer-content');
+
+  function renderDrawer(c) {
+    content.innerHTML = `
+      <img class="ig__drawer-hero" src="${c.heroImage}" alt="${c.name}" />
+      <div class="ig__drawer-body">
+        <div class="ig__drawer-meta">${c.drawerMeta.map((m, i) => i === 0 ? m : `<span class="dot">·</span>${m}`).join('')}</div>
+        <h2 class="ig__drawer-title">${c.name}</h2>
+        <div class="ig__drawer-stats" style="grid-template-columns: repeat(${c.drawerStats.length}, 1fr);">
+          ${c.drawerStats.map(s => `
+            <div class="ig__drawer-stat">
+              <div class="ig__drawer-stat-val">${s.val}</div>
+              <div class="ig__drawer-stat-lbl">${s.lbl}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="ig__drawer-includes">
+          <span class="ig__drawer-includes-label">Includes</span>
+          ${c.includes.map(i => `<span class="ig__pill">${i}</span>`).join('')}
+        </div>
+        <div class="ig__drawer-section">
+          <h3>The Challenge</h3>
+          <p>${c.challenge}</p>
+        </div>
+        <div class="ig__drawer-section">
+          <h3>Our Approach</h3>
+          <p>${c.approach}</p>
+        </div>
+        <div class="ig__drawer-section">
+          <h3>The Result</h3>
+          <p>${c.result}</p>
+        </div>
+        <div class="ig__drawer-section">
+          <h3>Services Deployed</h3>
+          <div class="ig__drawer-services">
+            ${c.services.map(s => `<span class="ig__chip">${s}</span>`).join('')}
+          </div>
+        </div>
+        <a class="ig__drawer-cta" href="#contact">
+          Start your workshop
+          <span class="ig__drawer-cta-arrow">→</span>
+        </a>
+      </div>
+    `;
+    drawer.scrollTop = 0;
+  }
+
+  function openDrawer(id) {
+    const c = CASE_STUDIES.find(x => x.id === id);
+    if (!c) return;
+    renderDrawer(c);
+    drawer.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('ig-locked');
+  }
+  function closeDrawer() {
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('ig-locked');
+  }
+
+  document.querySelectorAll('.ig__card').forEach(card => {
+    card.addEventListener('click', () => openDrawer(card.dataset.case));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(card.dataset.case); }
+    });
+  });
+  backdrop.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!--
+  IGLOO MEDIA — CASE STUDY TEMPLATE (Webflow custom code embed)
+  ============================================================
+  HOW TO USE:
+  1. In Webflow Designer, add an "Embed" element to your case study page.
+  2. Paste this entire file into the embed.
+  3. Find/replace the {{TOKENS}} below with the case study's content.
+  4. Replace placeholder image URLs with your uploaded asset URLs from Webflow.
+
+  TOKENS TO REPLACE:
+    {{CLIENT_NAME}}         e.g. "Vegan North"
+    {{TAGLINE}}             e.g. "Scaling a plant-based DTC brand to $5M ARR"
+    {{HERO_IMAGE_URL}}      Full-bleed hero image (recommend 2400x1400)
+    {{INDUSTRY}}            e.g. "Food & Beverage / DTC"
+    {{SERVICES}}            e.g. "Paid Social, Creative Strategy, CRO"
+    {{YEAR}}                e.g. "2025"
+    {{DURATION}}            e.g. "8 months"
+    {{STAT_1_VALUE}} ... {{STAT_4_LABEL}}
+    {{CHALLENGE_BODY}}, {{SOLUTION_BODY}}, {{RESULTS_BODY}}
+    {{GALLERY_1_URL}} ... {{GALLERY_6_URL}}
+    {{QUOTE_TEXT}}, {{QUOTE_AUTHOR}}, {{QUOTE_TITLE}}
+-->
+
+<style>
+  /* ---------- Scoped reset ---------- */
+  .ig-cs * { box-sizing: border-box; margin: 0; padding: 0; }
+  .ig-cs {
+    --ig-blue: #01a0f3;
+    --ig-ink: #0a0e14;
+    --ig-muted: #5b6470;
+    --ig-line: #e6e9ee;
+    --ig-bg: #ffffff;
+    --ig-bg-alt: #f5f7fa;
+    --ig-radius: 14px;
+    --ig-max: 1280px;
+    font-family: 'Outfit', 'Manrope', system-ui, -apple-system, sans-serif;
+    color: var(--ig-ink);
+    background: var(--ig-bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ig-cs img { display: block; max-width: 100%; height: auto; }
+  .ig-cs__wrap { max-width: var(--ig-max); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .ig-cs__hero {
+    position: relative;
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--ig-line);
+  }
+  .ig-cs__eyebrow {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ig-blue);
+    margin-bottom: 24px;
+  }
+  .ig-cs__title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+  }
+  .ig-cs__lede {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.45;
+    color: var(--ig-muted);
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+  .ig-cs__hero-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--ig-radius);
+    background: var(--ig-bg-alt);
+  }
+
+  /* ---------- Meta strip ---------- */
+  .ig-cs__meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--ig-line);
+  }
+  .ig-cs__meta-item h4 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ig-muted);
+    margin-bottom: 10px;
+  }
+  .ig-cs__meta-item p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ig-ink);
+  }
+
+  /* ---------- Stats ---------- */
+  .ig-cs__stats {
+    padding: 96px 0;
+    background: var(--ig-ink);
+    color: #fff;
+    margin: 0;
+  }
+  .ig-cs__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .ig-cs__stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ig-blue);
+    margin-bottom: 14px;
+  }
+  .ig-cs__stat-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.45;
+  }
+
+  /* ---------- Narrative (Challenge / Solution / Results) ---------- */
+  .ig-cs__narrative {
+    padding: 120px 0;
+  }
+  .ig-cs__chapter + .ig-cs__chapter { margin-top: 88px; }
+  .ig-cs__chapter {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .ig-cs__chapter-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ig-blue);
+    padding-top: 14px;
+  }
+  .ig-cs__chapter h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: clamp(30px, 3vw, 44px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .ig-cs__chapter p {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: var(--ig-muted);
+    max-width: 720px;
+  }
+  .ig-cs__chapter p + p { margin-top: 16px; }
+
+  /* ---------- Gallery ---------- */
+  .ig-cs__gallery {
+    background: var(--ig-bg-alt);
+    padding: 96px 0;
+  }
+  .ig-cs__gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  .ig-cs__gallery-item {
+    overflow: hidden;
+    border-radius: var(--ig-radius);
+    background: #fff;
+  }
+  .ig-cs__gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 5;
+    transition: transform 0.6s ease;
+  }
+  .ig-cs__gallery-item:hover img { transform: scale(1.04); }
+  /* Asymmetric layout — bold visual */
+  .ig-cs__gallery-item:nth-child(1) { grid-column: span 4; }
+  .ig-cs__gallery-item:nth-child(1) img { aspect-ratio: 16 / 10; }
+  .ig-cs__gallery-item:nth-child(2) { grid-column: span 2; }
+  .ig-cs__gallery-item:nth-child(3) { grid-column: span 2; }
+  .ig-cs__gallery-item:nth-child(4) { grid-column: span 2; }
+  .ig-cs__gallery-item:nth-child(5) { grid-column: span 2; }
+  .ig-cs__gallery-item:nth-child(6) { grid-column: span 6; }
+  .ig-cs__gallery-item:nth-child(6) img { aspect-ratio: 21 / 9; }
+
+  /* ---------- Testimonial ---------- */
+  .ig-cs__quote {
+    padding: 140px 0;
+    text-align: center;
+  }
+  .ig-cs__quote-mark {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 96px;
+    line-height: 1;
+    color: var(--ig-blue);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .ig-cs__quote-text {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 40px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    color: var(--ig-ink);
+  }
+  .ig-cs__quote-author {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ig-ink);
+  }
+  .ig-cs__quote-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: var(--ig-muted);
+    margin-top: 4px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .ig-cs__hero { padding: 64px 0 48px; }
+    .ig-cs__meta { grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 40px 0; }
+    .ig-cs__stats { padding: 64px 0; }
+    .ig-cs__stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .ig-cs__narrative { padding: 80px 0; }
+    .ig-cs__chapter { grid-template-columns: 1fr; gap: 16px; }
+    .ig-cs__chapter + .ig-cs__chapter { margin-top: 64px; }
+    .ig-cs__gallery { padding: 64px 0; }
+    .ig-cs__gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .ig-cs__gallery-item,
+    .ig-cs__gallery-item:nth-child(n) { grid-column: span 1; }
+    .ig-cs__gallery-item:nth-child(1),
+    .ig-cs__gallery-item:nth-child(6) { grid-column: span 2; }
+    .ig-cs__quote { padding: 88px 0; }
+  }
+
+  /* ---------- Subtle entrance animation ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .ig-cs__reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .ig-cs__reveal.is-in { opacity: 1; transform: none; }
+  }
+</style>
+
+<section class="ig-cs">
+
+  <!-- ===== HERO ===== -->
+  <div class="ig-cs__hero">
+    <div class="ig-cs__wrap">
+      <span class="ig-cs__eyebrow ig-cs__reveal">Case Study</span>
+      <h1 class="ig-cs__title ig-cs__reveal">{{CLIENT_NAME}}</h1>
+      <p class="ig-cs__lede ig-cs__reveal">{{TAGLINE}}</p>
+      <img class="ig-cs__hero-image ig-cs__reveal"
+           src="{{HERO_IMAGE_URL}}"
+           alt="{{CLIENT_NAME}} hero" />
+    </div>
+  </div>
+
+  <!-- ===== META ===== -->
+  <div class="ig-cs__wrap">
+    <div class="ig-cs__meta">
+      <div class="ig-cs__meta-item">
+        <h4>Industry</h4>
+        <p>{{INDUSTRY}}</p>
+      </div>
+      <div class="ig-cs__meta-item">
+        <h4>Services</h4>
+        <p>{{SERVICES}}</p>
+      </div>
+      <div class="ig-cs__meta-item">
+        <h4>Year</h4>
+        <p>{{YEAR}}</p>
+      </div>
+      <div class="ig-cs__meta-item">
+        <h4>Duration</h4>
+        <p>{{DURATION}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <div class="ig-cs__stats">
+    <div class="ig-cs__wrap">
+      <div class="ig-cs__stats-grid">
+        <div class="ig-cs__reveal">
+          <div class="ig-cs__stat-value">{{STAT_1_VALUE}}</div>
+          <div class="ig-cs__stat-label">{{STAT_1_LABEL}}</div>
+        </div>
+        <div class="ig-cs__reveal">
+          <div class="ig-cs__stat-value">{{STAT_2_VALUE}}</div>
+          <div class="ig-cs__stat-label">{{STAT_2_LABEL}}</div>
+        </div>
+        <div class="ig-cs__reveal">
+          <div class="ig-cs__stat-value">{{STAT_3_VALUE}}</div>
+          <div class="ig-cs__stat-label">{{STAT_3_LABEL}}</div>
+        </div>
+        <div class="ig-cs__reveal">
+          <div class="ig-cs__stat-value">{{STAT_4_VALUE}}</div>
+          <div class="ig-cs__stat-label">{{STAT_4_LABEL}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NARRATIVE ===== -->
+  <div class="ig-cs__narrative">
+    <div class="ig-cs__wrap">
+
+      <div class="ig-cs__chapter ig-cs__reveal">
+        <div class="ig-cs__chapter-num">01 — Challenge</div>
+        <div>
+          <h2>The brief</h2>
+          <p>{{CHALLENGE_BODY}}</p>
+        </div>
+      </div>
+
+      <div class="ig-cs__chapter ig-cs__reveal">
+        <div class="ig-cs__chapter-num">02 — Solution</div>
+        <div>
+          <h2>Our approach</h2>
+          <p>{{SOLUTION_BODY}}</p>
+        </div>
+      </div>
+
+      <div class="ig-cs__chapter ig-cs__reveal">
+        <div class="ig-cs__chapter-num">03 — Results</div>
+        <div>
+          <h2>The outcome</h2>
+          <p>{{RESULTS_BODY}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== GALLERY ===== -->
+  <div class="ig-cs__gallery">
+    <div class="ig-cs__wrap">
+      <div class="ig-cs__gallery-grid">
+        <div class="ig-cs__gallery-item ig-cs__reveal"><img src="{{GALLERY_1_URL}}" alt="" /></div>
+        <div class="ig-cs__gallery-item ig-cs__reveal"><img src="{{GALLERY_2_URL}}" alt="" /></div>
+        <div class="ig-cs__gallery-item ig-cs__reveal"><img src="{{GALLERY_3_URL}}" alt="" /></div>
+        <div class="ig-cs__gallery-item ig-cs__reveal"><img src="{{GALLERY_4_URL}}" alt="" /></div>
+        <div class="ig-cs__gallery-item ig-cs__reveal"><img src="{{GALLERY_5_URL}}" alt="" /></div>
+        <div class="ig-cs__gallery-item ig-cs__reveal"><img src="{{GALLERY_6_URL}}" alt="" /></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== QUOTE ===== -->
+  <div class="ig-cs__quote">
+    <div class="ig-cs__wrap">
+      <div class="ig-cs__quote-mark ig-cs__reveal">&ldquo;</div>
+      <p class="ig-cs__quote-text ig-cs__reveal">{{QUOTE_TEXT}}</p>
+      <div class="ig-cs__reveal">
+        <div class="ig-cs__quote-author">{{QUOTE_AUTHOR}}</div>
+        <div class="ig-cs__quote-title">{{QUOTE_TITLE}}</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  (function () {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.ig-cs__reveal').forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.ig-cs__reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>

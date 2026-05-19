@@ -124,7 +124,7 @@
   .drawer-close{position:sticky;top:20px;left:calc(100% - 56px);float:right;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.95);border:1px solid var(--line);cursor:pointer;z-index:5;display:grid;place-items:center;font-size:18px;color:var(--ink);margin:20px 16px 0 0;transition:background .2s,color .2s;}
   .drawer-close:hover{background:var(--ink);color:#fff;}
   .drawer-body{padding:0 56px 80px;}
-  .drawer-hero{padding:64px 0 32px;border-bottom:1px solid var(--line);margin-top:-60px;}
+  .drawer-hero{padding:32px 0 32px;border-bottom:1px solid var(--line);margin-top:0;}
   .drawer-meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
   .drawer-meta .dot{color:var(--cs-accent,var(--ig-orange));}
   .drawer-title{font-family:'Outfit',sans-serif;font-size:clamp(40px,4.5vw,60px);font-weight:400;line-height:1;letter-spacing:-0.025em;margin-bottom:18px;color:var(--ink);}
@@ -453,30 +453,30 @@
    ============================================================ */
 const CASES = [
   {
-    id:'northern-fitness',
-    name:'Northern Fitness',
-    accent:'green',
-    category:'Fitness · Wellness · Canada',
-    sub:'Google · Meta · SEO · Multi-channel',
-    tags:['paid-social','google','full-stack','lifestyle'],
-    summary:"Multi-channel growth for Canada's leading fitness equipment retailer — brand-level segmentation across Google, Meta and SEO, tuned for category-level ROI.",
+    id:'delta-children',
+    name:'Delta Children',
+    accent:'orange',
+    category:'Baby & Home',
+    sub:'Amazon VC · Google · Meta · TikTok · Pinterest',
+    tags:['amazon','full-stack','baby'],
+    summary:"Multi-channel rebuild for a Baby category leader — full Amazon VC + Seller Central restructure plus a coordinated Google, Meta, TikTok and Pinterest stack.",
     cardStats:[
-      {val:'<em>+40%</em>',lbl:'YoY revenue'},
-      {val:'15x+',lbl:'ROAS, core categories'},
-      {val:'5–8%',lbl:'TACOS held'}
+      {val:'<em>+100%</em>',lbl:'Amazon VC paid rev'},
+      {val:'+28%',lbl:'Q4 YoY revenue'},
+      {val:'2023+',lbl:'BFCM surpassed'}
     ],
     viz:'line-up',
-    vizLabel:'YoY REVENUE',
+    vizLabel:'PAID REV · 6 MO',
     drawerStats:[
-      {val:'<em>+40%</em>',lbl:'Year-over-year revenue growth'},
-      {val:'15x+',lbl:'ROAS held on core categories'},
-      {val:'5–8%',lbl:'TACOS through scaling'}
+      {val:'<em>+100%</em>',lbl:'Amazon VC paid revenue growth (first 6 months)'},
+      {val:'+28%',lbl:'Q4 YoY revenue growth with TACOS held'},
+      {val:'Beat 2023',lbl:'BFCM weekend performance surpassed'}
     ],
-    services:['Google Ads','Meta Paid Social','SEO + Backlinks','AI-SEO Site Structure','Brand-Level Segmentation'],
-    challenge:"Northern Fitness operates a complex reseller model that requires strategies aligned to diverse margin profiles, brand-specific CAC targets and category-level ROI expectations. The team needed sharper visibility in exclusive high-intent product categories and clearer TACOS/efficiency tracking during scaling.",
-    approach:"Brand-level segmentation across Google Ads and Meta gave precise budget control. SEO was strengthened through backlink development, on-site optimization and AI-SEO structural updates. Igloo worked directly with leadership to monitor efficiency, reduce diminishing returns, improve TACOS reporting and support REP Fitness' exclusive Canadian launch.",
-    result:"40% YoY revenue growth. CAC stability with TACOS held in the 5–8% band. ROAS held at 15x+ for core categories. Improved non-branded visibility, an AI-ready site structure and a successful exclusive-launch support motion for REP Fitness in Canada.",
-    quote:null
+    services:['Amazon Ads','Google Ads','Facebook Ads','TikTok Ads','Pinterest Ads','Adbrew','Upspring.ai Creative Insights'],
+    challenge:"Delta was coming out of a tough 2024 marked by tariff changes, softer consumer sentiment, and the realities of the baby category where parents often take 4–6 months to choose a crib, stroller, or nursery setup. This long consideration window made incrementality hard to measure, visibility into channels unclear, and consistency across media challenging.",
+    approach:"The team focused on rebuilding clarity within each ad channel's reporting, strengthening foundational campaign structures, and helping the brand return to growth. Strategy centered on nurturing and educating prospects while building intent over time, with structural improvements across Amazon, Google, and Facebook channels.",
+    result:"Delta achieved 28% Q4 year-over-year revenue growth while maintaining TACOS efficiency, and surpassed their exceptional 2023 performance during BFCM weekend.",
+    quote:{text:"Can't speak highly enough of Igloo! They're an absolute pleasure to work with, efficient, responsive.",author:"Lorraine Gold",role:"Co-founder, Delta Children"}
   },
   {
     id:'duradry',
@@ -498,63 +498,11 @@ const CASES = [
       {val:'Reduced',lbl:'Retainer fees vs prior agency'},
       {val:'Stable',lbl:'TACOS enabling scalable growth'}
     ],
-    services:['Amazon Sponsored Ads','Amazon Marketing Cloud','Adbrew Day-Parting','DataDive','Amazon DSP (2026)'],
+    services:['Amazon Ads','Amazon Marketing Cloud','Adbrew','DataDive','Amazon DSP'],
     challenge:"Duradry was operating under high agency retainers that limited growth flexibility. Despite strong performance, the brand needed tighter ACOS/TACOS control, improved efficiency and a more advanced strategic foundation before scaling further. Competition against major legacy deodorant brands made precision visibility essential.",
     approach:"Igloo transitioned Duradry off its costly agency model by embedding directly into operations. Built an efficiency-focused Sponsored Ads structure using AMC for attribution. Deployed day-parting through Adbrew for bid optimization in peak windows. Integrated DataDive for competitive and category visibility. Developed a forward Amazon DSP roadmap for 2026 top-of-funnel expansion.",
     result:"Reduced retainer fees compared to the previous agency. 4–6% TTM ACOS reduction vs. prior year. Improved TACOS stability. Higher category visibility against legacy competitors. Advanced tooling fully integrated and a DSP roadmap in place for 2026 — bringing the operation close to in-house alignment.",
     quote:{text:"The Amazon team at Igloo's been amazing to work with. Hitesh as an operator and former founder has a really pragmatic and analytical approach to media buying.",author:"Jack Benzaquen",role:"Founder, Duradry"}
-  },
-  {
-    id:'delta-children',
-    name:'Delta Children',
-    accent:'orange',
-    category:'Baby & Home',
-    sub:'Amazon VC · Google · Meta · TikTok · Pinterest',
-    tags:['amazon','full-stack','baby'],
-    summary:"Multi-channel rebuild for a Baby category leader — full Amazon VC + Seller Central restructure plus a coordinated Google, Meta, TikTok and Pinterest stack.",
-    cardStats:[
-      {val:'<em>+100%</em>',lbl:'Amazon VC paid rev'},
-      {val:'+28%',lbl:'Q4 YoY revenue'},
-      {val:'2023+',lbl:'BFCM surpassed'}
-    ],
-    viz:'line-up',
-    vizLabel:'PAID REV · 6 MO',
-    drawerStats:[
-      {val:'<em>+100%</em>',lbl:'Amazon VC paid revenue growth (first 6 months)'},
-      {val:'+28%',lbl:'Q4 YoY revenue growth with TACOS held'},
-      {val:'Beat 2023',lbl:'BFCM weekend performance surpassed'}
-    ],
-    services:['Amazon VC + Seller Central','Google Non-Branded','Meta Prospecting + RT','TikTok','Pinterest','Adbrew Day-Parting','Upspring.ai Creative Insights'],
-    challenge:"Delta was coming out of a tough 2024 marked by tariff changes, softer consumer sentiment, and the realities of the baby category where parents often take 4–6 months to choose a crib, stroller, or nursery setup. This long consideration window made incrementality hard to measure, visibility into channels unclear, and consistency across media challenging.",
-    approach:"The team focused on rebuilding clarity within each ad channel's reporting, strengthening foundational campaign structures, and helping the brand return to growth. Strategy centered on nurturing and educating prospects while building intent over time, with structural improvements across Amazon, Google, and Facebook channels.",
-    result:"Delta achieved 28% Q4 year-over-year revenue growth while maintaining TACOS efficiency, and surpassed their exceptional 2023 performance during BFCM weekend.",
-    quote:{text:"Can't speak highly enough of Igloo! They're an absolute pleasure to work with, efficient, responsive.",author:"Lorraine Gold",role:"Co-founder, Delta Children"}
-  },
-  {
-    id:'medistik',
-    name:'Medistik',
-    accent:'orange',
-    category:'Health & Wellness · Pain Relief',
-    sub:'Amazon · Landing Page CRO',
-    tags:['amazon','health'],
-    summary:"Compounding efficiency for a Top-3 Canadian pain-relief brand — Amazon advertising optimization plus a landing-page redesign and CRO program.",
-    cardStats:[
-      {val:'<em>+20%</em>',lbl:'MoM Amazon sales'},
-      {val:'+4%',lbl:'CVR lift, LP redesign'},
-      {val:'Top 3',lbl:'Canada category'}
-    ],
-    viz:'line-up',
-    vizLabel:'MoM SALES',
-    drawerStats:[
-      {val:'<em>+20%</em>',lbl:'Month-over-month Amazon sales growth'},
-      {val:'+4%',lbl:'Conversion rate lift from landing-page redesign'},
-      {val:'Maintained',lbl:'Campaign efficiency during scaling'}
-    ],
-    services:['Sponsored Ads Architecture','Amazon Marketing Cloud','Adbrew Day-Parting','DataDive','DSP Roadmap (2026)'],
-    challenge:"Duradry previously operated under high agency retainers, limiting flexibility for growth. While performance was strong, the brand needed tighter ACOS/TACOS control, stronger efficiency, and a more advanced strategic foundation before scaling. Competing against major legacy deodorant brands also made visibility and precision advertising essential.",
-    approach:"Igloo transitioned Duradry from their costly agency model and embedded directly into their internal workflow. We built an efficiency-first Sponsored Ads structure supported by Amazon Marketing Cloud for improved attribution and audience clarity, and partnered with Adbrew to deploy a sophisticated day-parting strategy, optimising bids during peak converting hours. To deepen competitive intelligence, we integrated DataDive, tracking listing optimisation rankings, share of voice, and early signals of diminishing returns across the category.",
-    result:"Multiple impacts achieved including reduced retainer costs, improved ACOS, stronger TACOS stability, enhanced competitive visibility, advanced tool integration, dayparting efficiency gains, and a defined DSP roadmap for 2026.",
-    quote:{text:"The Amazon team at Igloo's been amazing to work with. Hitesh has a really pragmatic approach.",author:"Jack Benzaquen",role:"Founder, Duradry"}
   },
   {
     id:'hugz',
@@ -576,7 +524,7 @@ const CASES = [
       {val:'+246%',lbl:'Year 2 → Year 3 growth'},
       {val:'Strong',lbl:'ROAS with disciplined account structure'}
     ],
-    services:['Meta Full-Funnel','Google Acquisition','"Say No To Stress" Campaign','Creative Testing Engine','Upspring.ai','Forecasting + Budget Guardrails'],
+    services:['Facebook Ads','Google Ads','Say No To Stress" Campaign','Creative Testing','Upspring.ai','Forecasting'],
     challenge:"When Hugz came to Igloo, the brand was brand new and looking for a hands-on, affordable partner who could help them move from the early foundational steps into becoming a real pioneer in the emotional wellness space.",
     approach:"We built a full-funnel acquisition system across Meta and Google, optimising daily to maintain strong ROAS while supporting aggressive growth. On the creative side, we shaped the storytelling behind the 'Say No To Stress' campaign and developed an iterative testing framework.",
     result:"Hugz has become one of Igloo's fastest-growing partnerships, with significant year-over-year expansion supported by strong ROAS, disciplined account structure, and a creative engine built to evolve with the brand.",
@@ -602,135 +550,11 @@ const CASES = [
       {val:'+4%',lbl:'Conversion rate increase from LP redesign'},
       {val:'Maintained',lbl:'Campaign efficiency during scaling'}
     ],
-    services:['Amazon PPC Optimization','Strategic Bidding + Keywords','Brand Defense','Landing Page Redesign','CRO Strategy'],
+    services:['Amazon Ads','Keyword Strategy','Brand Protection','Landing Page CRO'],
     challenge:"Medistik needed to enhance its e-commerce presence, optimize advertising performance, and scale sustainably in a competitive pain relief category.",
     approach:"Igloo Media Group provided a comprehensive digital marketing partnership focused on Amazon advertising optimization and landing page design, refining campaigns through data-driven decisions and ongoing performance analysis.",
     result:"The partnership delivered consistent month-over-month growth on Amazon alongside meaningful gains in landing page conversion.",
     quote:{text:"Working with Igloo has been great so far! It's really valuable having founders who understand the business deeply to help manage strategy.",author:"Naser A.",role:"Medistik"}
-  },
-  {
-    id:'mockingbird',
-    name:'Mockingbird',
-    accent:'purple',
-    category:'Baby · Strollers',
-    sub:'TikTok · Meta · Pinterest · Recast',
-    tags:['paid-social','baby','full-stack'],
-    summary:"Long-consideration acquisition engine for a parent-favorite stroller brand — rebuilt around engaged-browser tags, incrementality and custom MMM.",
-    cardStats:[
-      {val:'<em>+10–15%</em>',lbl:'YoY ROAS'},
-      {val:'Stable',lbl:'TACOS efficiency'},
-      {val:'5-person',lbl:'Igloo team'}
-    ],
-    viz:'line-up-slow',
-    vizLabel:'YoY ROAS',
-    drawerStats:[
-      {val:'<em>+10–15%</em>',lbl:'Year-on-year ROAS improvement'},
-      {val:'Stable',lbl:'TACOS efficiency despite top-of-funnel investment'},
-      {val:'Cleaner',lbl:'Incrementality insights via Recast'}
-    ],
-    services:['TikTok','Meta','Pinterest','Performance Strategy','Creative Testing','Recast (Incrementality / MMM)'],
-    challenge:"Strollers come with one of the longest consideration cycles in the baby category. Parents often research for months, which means attribution is slow and traditional performance metrics don't tell the full story.",
-    approach:"The team rebuilt the acquisition engine around engaged browser tags and leaned on Recast (an incrementality/MMM tool) to operate with custom reporting. This enabled earlier nurturing in the customer journey while adapting funnel structure to account for delayed attribution.",
-    result:"Consistent improvements across platforms with stronger creative and audience foundations resulted in a more reliable prospecting engine that helped Mockingbird scale their direct-to-consumer business.",
-    quote:null
-  },
-  {
-    id:'pure-wine',
-    name:'Pure Wine',
-    accent:'red',
-    category:'Beverage Accessories',
-    sub:'Amazon + DTC · BWP',
-    tags:['amazon','google','full-stack'],
-    summary:"DTC expansion for the #1 wine accessory brand on Amazon — Google rebuild, Meta refresh, Klaviyo lifecycle and Buy With Prime integration.",
-    cardStats:[
-      {val:'<em>+30%</em>',lbl:'Google ROAS'},
-      {val:'~10%',lbl:'BWP daily contribution'},
-      {val:'#1',lbl:'Amazon NA category'}
-    ],
-    viz:'line-up',
-    vizLabel:'GOOGLE ROAS',
-    drawerStats:[
-      {val:'<em>+30%</em>',lbl:'Google ROAS improvement since launch'},
-      {val:'~10%',lbl:'Buy With Prime contribution of daily sales'},
-      {val:'#1',lbl:'Wine & beverage accessory on Amazon NA'}
-    ],
-    services:['Google Non-Branded','Meta Creative + Funnel','Klaviyo Lifecycle','Web/Funnel Optimization','Buy With Prime'],
-    challenge:"Pure Wine had become the #1 wine accessory on Amazon, but needed to expand beyond Amazon into DTC channels while reducing fixed costs and building a more ownable customer relationship — all without cannibalizing existing demand.",
-    approach:"We partnered closely with leadership to reduce fixed costs, stabilize the bottom line, and embed a lean roster of senior specialists across Google, Facebook, Email, Graphic Design, and Web Development to build a growth engine that could scale sustainably.",
-    result:"Early results have been incredibly encouraging, contributing organically to roughly 10% of daily sales with minimal DTC cannibalization — giving Pure Wine stronger margin control and a more ownable relationship with their customers.",
-    quote:{text:"We've worked with the Igloo team for 18 months and have been consistently impressed by their commitment to helping us succeed financially.",author:"David Meadows",role:"PureWine"}
-  },
-  {
-    id:'bombtech-golf',
-    name:'BombTech Golf',
-    accent:'green',
-    category:'Sports · Golf',
-    sub:'Meta · Google · Email · 18 mo',
-    tags:['paid-social','google','full-stack'],
-    summary:"Full-stack growth for a rebellious-tone golf brand — Meta, Google, creative and email running together against a fixed 6+ ROAS target.",
-    cardStats:[
-      {val:'<em>6+×</em>',lbl:'ROAS sustained'},
-      {val:'18 mo',lbl:'Engagement'}
-    ],
-    viz:'line-flat-high',
-    vizLabel:'ROAS · 18 MO',
-    drawerStats:[
-      {val:'<em>6+×</em>',lbl:'ROAS threshold sustained and exceeded'},
-      {val:'18 months',lbl:'Continuous engagement'}
-    ],
-    services:['Facebook Ads','Google Ads','Creative Development','Email Marketing'],
-    challenge:"Working in the golf category means moulding copy, branding, and creative content in the brand's voice is vital — and BombTech's rebellious, boisterous tone needed to be maintained while still scaling profitably to beginner and intermediate golfers in the US.",
-    approach:"Igloo Media has been proudly partnering with BombTech Golf, delivering a comprehensive suite of services including Facebook Ads, Google Ads, Creative, and Email Marketing. By leveraging targeted advertising strategies and compelling creative content in BombTech's signature rebellious and boisterous tone, we have successfully amplified BombTech Golf's brand amongst beginner and intermediate golfers in the US.",
-    result:"Maintaining the profitability of BombTech Golf has been a core focus of our collaboration, with consistent achievement of performance targets throughout the partnership.",
-    quote:null
-  },
-  {
-    id:'dream-recovery',
-    name:'Dream Recovery',
-    accent:'purple',
-    category:'Sleep · Wellness',
-    sub:'Meta + TikTok · Assistant Program',
-    tags:['paid-social','health'],
-    qualitative:true,
-    summary:"Embedded partnership through Igloo's Assistant Program — paid social, creative video production and structured creative testing.",
-    cardStats:[
-      {val:'<em>Insight-led</em>',lbl:'Faster growth system'}
-    ],
-    viz:'line-up-slow',
-    vizLabel:'OUTCOMES',
-    drawerStats:[
-      {val:'Faster',lbl:'Insight-led growth system'},
-      {val:'Senior',lbl:'Every professional Igloo provides'}
-    ],
-    services:['Meta + TikTok Paid Social','Creative Video Production','Media Buying','Structured Creative Testing'],
-    challenge:"Dream Recovery needed to scale growing demand for natural sleep solutions in an increasingly competitive wellness landscape, while operating as a lean team without an in-house creative engine.",
-    approach:"Through our Igloo Assistant Program, we've supported the brand as an end-to-end creative and performance extension of their team — running paid social campaigns across Meta and TikTok, leading creative strategy and video editing, optimizing media buying, and applying structured creative testing to strengthen performance.",
-    result:"The work created a faster-moving, insight-led growth system designed to help Dream Recovery scale confidently in an increasingly competitive wellness landscape.",
-    quote:{text:"Andrew and the Igloo team have been instrumental in our success. Every professional Igloo provides is senior-level.",author:"Alejandro Flaquer",role:"Dream Recovery"}
-  },
-  {
-    id:'jung',
-    name:'JUNG+',
-    accent:'blue',
-    category:'Longevity · Supplements',
-    sub:'Meta + Google · LTV-first',
-    tags:['paid-social','google','health'],
-    qualitative:true,
-    summary:"Scaling customer acquisition for a scientist-founded longevity supplement brand — built around retention and LTV, not first-touch.",
-    cardStats:[
-      {val:'<em>LTV-led</em>',lbl:'Retention-first model'}
-    ],
-    viz:'line-up-slow',
-    vizLabel:'LTV CURVE',
-    drawerStats:[
-      {val:'LTV-led',lbl:'Retention-first scaling model'},
-      {val:'Strong',lbl:'Repeat customer behavior'}
-    ],
-    services:['Facebook Ads','Google Ads','Creative Testing','Advanced GTM Tracking','LTV Modeling'],
-    challenge:"JUNG+ needed to scale customer acquisition while keeping retention and lifetime value at the heart of the strategy — building a loyal longevity-focused community rather than chasing one-time conversions.",
-    approach:"Through an integrated approach across Facebook and Google ads, Igloo has implemented robust creative testing, allowing the team to identify winning assets that resonate deeply with JUNG's audience.",
-    result:"By aligning paid media with the brand's positioning, we're cultivating a loyal community that values longevity and innovation.",
-    quote:null
   },
   {
     id:'mockingbird',
@@ -752,7 +576,7 @@ const CASES = [
       {val:'Stable',lbl:'TACOS efficiency despite top-of-funnel investment'},
       {val:'Cleaner',lbl:'Incrementality insights via Recast'}
     ],
-    services:['TikTok','Meta','Pinterest','Performance Strategy','Creative Testing','Recast (Incrementality / MMM)'],
+    services:['TikTok Ads','Facebook Ads','Pinterest Ads','Performance Strategy','Creative Testing','Incrementality (MMM)'],
     challenge:"Strollers have one of the longest consideration cycles in the baby category — parents research for months. That makes attribution slow to read and platform-default performance metrics unreliable.",
     approach:"Rebuilt the acquisition engine around engaged-browser tags to expand prospecting using genuine intent signals. Refined account structures, creative segmentation and audience frameworks across platforms. Custom Recast reporting replaced platform-default signals. High-funnel initiatives were integrated to address delayed last-click attribution.",
     result:"10–15% year-on-year ROAS improvement (monthly variation). Stable TACOS efficiency despite increased top-of-funnel investment. Cleaner incrementality insights through custom Recast reporting and stronger creative and audience foundations for prospecting.",
@@ -778,34 +602,10 @@ const CASES = [
       {val:'~10%',lbl:'Buy With Prime contribution of daily sales'},
       {val:'#1',lbl:'Wine & beverage accessory on Amazon NA'}
     ],
-    services:['Google Ads','Meta','Email / Klaviyo','Graphic Design','Web Development','Buy With Prime'],
+    services:['Google Ads','Facebook Ads','Klaviyo','Graphic Design','Web Development','Buy With Prime'],
     challenge:"Pure Wine had dominant Amazon marketplace presence but needed to expand into DTC channels while managing costs and building sustainable growth infrastructure across platforms.",
     approach:"Rebuilt the Google account with a non-branded performance strategy targeting symptom-based searches. Refreshed creative and funnel strategy on Meta. Optimized email flows. Refined web experience and funnel sequencing. Rolled out Buy With Prime to layer Amazon-quality conversion into the DTC funnel.",
     result:"Google ROAS improved 30% since launch while efficiency was maintained and reach expanded. Buy With Prime contributed ~10% of daily sales with minimal DTC cannibalization and improved margin control. Held #1 position in wine & beverage accessories on Amazon North America with tens of thousands of 5-star reviews.",
-    quote:null
-  },
-  {
-    id:'kodiak-leather',
-    name:'Kodiak Leather',
-    accent:'orange',
-    category:'Fashion · Apparel',
-    sub:'Full-stack · Paid + Creative + Email',
-    tags:['paid-social','full-stack','lifestyle'],
-    qualitative:true,
-    summary:"Full-stack service for a rugged leather goods brand from Lehi, Utah — paid media, creative design and email working as one motion.",
-    cardStats:[
-      {val:'<em>Dominant</em>',lbl:'Leather goods niche'}
-    ],
-    viz:'line-flat-high',
-    vizLabel:'BRAND HOLD',
-    drawerStats:[
-      {val:'Dominant',lbl:'Position held in the leather goods niche'},
-      {val:'Full-Stack',lbl:'Service across paid + creative + email'}
-    ],
-    services:['Paid Media','Creative Design','Email Marketing'],
-    challenge:"Kodiak Leather wanted to maintain its dominant position in the rugged leather goods niche while driving market expansion and bottom-line growth.",
-    approach:"Igloo worked closely with the Kodiak team across paid media channels, creative design and email marketing — a tailored full-stack service rather than a templated agency playbook, tuned to Kodiak's tone and audience.",
-    result:"Reinforced Kodiak's dominant position in the leather goods niche while opening market expansion and profitability growth in adjacent segments.",
     quote:null
   },
   {
@@ -826,83 +626,58 @@ const CASES = [
       {val:'<em>6+×</em>',lbl:'ROAS threshold sustained and exceeded'},
       {val:'18 months',lbl:'Continuous partnership'}
     ],
-    services:['Facebook Ads','Google Ads','Creative','Email Marketing'],
+    services:['Facebook Ads','Google Ads','Creative','Email'],
     challenge:"Golf branding presents unique difficulties — golf vernacular lacks standard grammar conventions, requiring skillful adaptation of copy, branding and creative messaging while preserving BombTech's distinctive rebellious and boisterous voice.",
     approach:"18 months of comprehensive digital marketing partnership leveraging targeted advertising and compelling creative content. A full-stack approach focused on amplifying brand awareness among beginner and intermediate golfers across the US — with profitability treated as a core objective rather than a side metric.",
     result:"Achieved and exceeded the desired ROAS threshold of 6+, a critical metric for sustaining profitability and driving sales growth across the engagement.",
     quote:null
   },
   {
-    id:'stakt',
-    name:'Stakt',
-    accent:'blue',
-    category:'Fitness · Lifestyle',
-    sub:'Paid Social · 2022–2024',
-    tags:['paid-social','lifestyle'],
-    qualitative:true,
-    summary:"Multi-year paid-social growth for a versatile, design-forward yoga mat — from a New York launch to nationwide recognition.",
-    cardStats:[
-      {val:'<em>NY → US</em>',lbl:'Nationwide recognition'}
-    ],
-    viz:'line-up',
-    vizLabel:'BRAND GROWTH',
-    drawerStats:[
-      {val:'NY → US',lbl:'Expansion from New York to nationwide'},
-      {val:'2022–2024',lbl:'Multi-year growth partnership'}
-    ],
-    services:['Paid Social','Creative Support','Digital Marketing'],
-    challenge:"Founders Millie and Taylor built Stakt because existing yoga mats lacked the versatility, support and aesthetic appeal needed for diverse home workouts including sculpt, pilates and strength training. The challenge was building category awareness for a new format.",
-    approach:"Igloo partnered with Stakt across social media channels, supporting their growth trajectory from 2022 through 2024 — pairing performance buying with brand-led creative.",
-    result:"Stakt expanded from New York to nationwide recognition, with yogis across the country upgrading to the brand's design-forward mats.",
-    quote:null
-  },
-  {
-    id:'dean-phillips',
-    name:'Dean Phillips for President',
-    accent:'red',
-    category:'Political Advertising',
-    sub:'Google · Meta · Creative Studio',
-    tags:['paid-social','google','full-stack'],
-    summary:"Lead paid-media partner for the Dean24 presidential campaign — compliant creative at speed across Google and Meta inside a compressed primary timeline.",
-    cardStats:[
-      {val:'<em>20%</em>',lbl:'NH vote share'},
-      {val:'Rapid',lbl:'Response creative'}
-    ],
-    viz:'bars-up',
-    vizLabel:'NH PRIMARY',
-    drawerStats:[
-      {val:'<em>20%</em>',lbl:'Vote share in New Hampshire primary'},
-      {val:'Rapid',lbl:'Response ads deployed in real time'}
-    ],
-    services:['Paid Media (Google & Meta)','Videography','Animations','Static Creative','Digital Marketing'],
-    challenge:"The Dean24 campaign needed to convey the candidate's policies and beliefs while scaling cost-effectively inside a compressed primary timeframe — under strict political-advertising compliance from both platforms.",
-    approach:"Igloo served as Lead Paid Media Specialists, focusing on Google and Meta while developing compliant creative assets — video, animation and static — aligned with each platform's political-advertising standards.",
-    result:"Dean Phillips achieved a 20% vote share in New Hampshire before withdrawing his presidential bid in March 2024 to support President Biden.",
-    quote:{text:"The folks at Igloo are best in class. They are flexible and nimble every step of the way — allowing us to fine-tune our strategy in real time, deploy rapid response ads, and scale our output with the help of their outstanding creative studio.",author:"Jon L.",role:"Marketing Director, Dean24"}
-  },
-  {
-    id:'naomi-nomi',
-    name:'NAOMI NOMI',
+    id:'dream-recovery',
+    name:'Dream Recovery',
     accent:'purple',
-    category:'Fashion',
-    sub:'Meta · Google · Creative',
-    tags:['paid-social','google','lifestyle'],
-    summary:"Scaling a fashion brand with intention — keeping the intimacy and soul of NAOMI NOMI intact while expanding into Google as a second core channel.",
+    category:'Sleep · Wellness',
+    sub:'Meta + TikTok · Assistant Program',
+    tags:['paid-social','health'],
+    qualitative:true,
+    summary:"Embedded partnership through Igloo's Assistant Program — paid social, creative video production and structured creative testing.",
     cardStats:[
-      {val:'<em>+30%</em>',lbl:'Y1→Y2 growth'},
-      {val:'+25%',lbl:'Y2→Y3 growth'}
+      {val:'<em>Insight-led</em>',lbl:'Faster growth system'}
     ],
-    viz:'line-up',
-    vizLabel:'YoY GROWTH',
+    viz:'line-up-slow',
+    vizLabel:'OUTCOMES',
     drawerStats:[
-      {val:'<em>+30%</em>',lbl:'Year 1 → Year 2 growth'},
-      {val:'+25%',lbl:'Year 2 → Year 3 growth'},
-      {val:'2nd channel',lbl:'Google as a core acquisition channel'}
+      {val:'Faster',lbl:'Insight-led growth system'},
+      {val:'Senior',lbl:'Every professional Igloo provides'}
     ],
-    services:['Meta','Google','Creative','Performance Frameworks'],
-    challenge:"NAOMI NOMI needed to scale customer acquisition without losing the intimacy and soul that defined the brand — a balance many fashion brands lose when shifting to performance marketing.",
-    approach:"Igloo helped NAOMI NOMI scale with intention — new creative, fresh performance frameworks and a measured expansion into Google as a second core channel for sustainable long-term growth.",
-    result:"30% growth from Year 1 to Year 2 and 25% growth from Year 2 to Year 3 — with the brand building toward a stronger digital presence through new creative initiatives and a diversified channel mix.",
+    services:['Facebook Ads','Video Production','Media Buying','Creative Testing'],
+    challenge:"Dream Recovery needed to scale growing demand for natural sleep solutions in an increasingly competitive wellness landscape, while operating as a lean team without an in-house creative engine.",
+    approach:"Through our Igloo Assistant Program, we've supported the brand as an end-to-end creative and performance extension of their team — running paid social campaigns across Meta and TikTok, leading creative strategy and video editing, optimizing media buying, and applying structured creative testing to strengthen performance.",
+    result:"The work created a faster-moving, insight-led growth system designed to help Dream Recovery scale confidently in an increasingly competitive wellness landscape.",
+    quote:{text:"Andrew and the Igloo team have been instrumental in our success. Every professional Igloo provides is senior-level.",author:"Alejandro Flaquer",role:"Dream Recovery"}
+  },
+  {
+    id:'jung',
+    name:'JUNG+',
+    accent:'blue',
+    category:'Longevity · Supplements',
+    sub:'Meta + Google · LTV-first',
+    tags:['paid-social','google','health'],
+    qualitative:true,
+    summary:"Scaling customer acquisition for a scientist-founded longevity supplement brand — built around retention and LTV, not first-touch.",
+    cardStats:[
+      {val:'<em>LTV-led</em>',lbl:'Retention-first model'}
+    ],
+    viz:'line-up-slow',
+    vizLabel:'LTV CURVE',
+    drawerStats:[
+      {val:'LTV-led',lbl:'Retention-first scaling model'},
+      {val:'Strong',lbl:'Repeat customer behavior'}
+    ],
+    services:['Facebook Ads','Google Ads','Creative Testing','GTM Tracking','LTV Modeling'],
+    challenge:"JUNG+ needed to scale customer acquisition while keeping retention and lifetime value at the heart of the strategy — building a loyal longevity-focused community rather than chasing one-time conversions.",
+    approach:"Through an integrated approach across Facebook and Google ads, Igloo has implemented robust creative testing, allowing the team to identify winning assets that resonate deeply with JUNG's audience.",
+    result:"By aligning paid media with the brand's positioning, we're cultivating a loyal community that values longevity and innovation.",
     quote:null
   },
   {
@@ -923,7 +698,7 @@ const CASES = [
       {val:'Millions',lbl:'People reached across the US'},
       {val:'Hundreds',lbl:'Eligible patients treated'}
     ],
-    services:['Digital Marketing','Software Development','Telehealth Platform','Subscription Treatment Funnels'],
+    services:['Digital Marketing','Software','Telehealth Platform','Funnel Design'],
     challenge:"Many individuals are hesitant to seek out psychedelic and ketamine treatments due to the stigma surrounding them or the inconvenience of having to go to a clinic or hospital for treatment.",
     approach:"Innerwell has addressed these concerns by offering at-home Ketamine and psychedelic treatment services, where patients work face to face with the leading clinicians in their field in the United States — with Igloo driving paid acquisition to reach eligible patients at scale.",
     result:"Igloo has helped Innerwell reach millions of people all over the US, and have helped treat hundreds of eligible patients across the US in need of a tailored program and first-class care from leading clinicians.",
@@ -949,58 +724,34 @@ const CASES = [
       {val:'5–8%',lbl:'TACOS held during scaling'},
       {val:'15×+',lbl:'ROAS on hero brand campaigns'}
     ],
-    services:['Google Ads','Meta','SEO','Backlink Development','On-Site Optimisation','AI SEO Structure'],
+    services:['Google Ads','Facebook Ads','SEO','AI SEO'],
     challenge:"As a reseller with a diverse catalogue and varied partner requirements, Northern Fitness needed strategy tailored to complex margin profiles, brand-specific CAC targets, and category-level ROI expectations. They also needed stronger visibility in exclusive high-intent product categories, along with improved clarity around TACOS and efficiency metrics as the business scaled.",
     approach:"Igloo introduced a brand-level segmentation framework across Google Ads and Meta, enabling precise budget control and optimisation down to the creative layer. We strengthened SEO performance through backlink development, on-site optimisation, and structural updates tailored for AI SEO.",
     result:"Northern Fitness achieved significant, measurable commercial growth, supported by scalable performance infrastructure — including revenue growth, maintained CAC stability, and improved non-branded visibility.",
     quote:null
   },
   {
-    id:'muslin-comfort',
-    name:'Muslin Comfort',
+    id:'kodiak-leather',
+    name:'Kodiak Leather',
     accent:'orange',
-    category:'Luxury Home · Bedding',
-    sub:'Meta · Google · Creative',
-    tags:['paid-social','google','lifestyle'],
-    summary:"Scaling a muslin bedding brand efficiently — Meta + Google with creative design driving incremental sales beyond the attribution window.",
-    cardStats:[
-      {val:'<em>+30%</em>',lbl:'ROAS, 6 mo'},
-      {val:'Held',lbl:'Profitability % of sales'}
-    ],
-    viz:'line-up',
-    vizLabel:'ROAS · 6 MO',
-    drawerStats:[
-      {val:'<em>+30%</em>',lbl:'ROAS improvement in first six months'},
-      {val:'Held',lbl:'Profitability as a percentage of sales'}
-    ],
-    services:['Facebook Ads','Google Ads','Creative Design','Digital Marketing'],
-    challenge:"Muslin Comfort needed to scale efficiently and reach new audiences without compromising profitability — in a category where purchase lead times often stretched beyond the platform attribution window.",
-    approach:"Executed Facebook and Google ad strategies paired with creative design to drive growth. Recognizing that consideration could fall outside the attribution window, Igloo identified Meta as a strong solution for driving incremental sales over time and weighted the channel mix accordingly.",
-    result:"Within the first six months, Muslin Comfort scaled revenue while improving benchmark ROAS by 30% — and maintained profitability as a percentage of sales throughout.",
-    quote:null
-  },
-  {
-    id:'vowel',
-    name:'Vowel',
-    accent:'blue',
-    category:'SaaS · AI Meetings',
-    sub:'Digital + Software',
+    category:'Fashion · Apparel',
+    sub:'Full-stack · Paid + Creative + Email',
     tags:['paid-social','full-stack','lifestyle'],
     qualitative:true,
-    summary:"Digital + software partnership for an AI-driven video conferencing platform — intelligent note-taking, transcription and meeting summaries.",
+    summary:"Full-stack service for a rugged leather goods brand from Lehi, Utah — paid media, creative design and email working as one motion.",
     cardStats:[
-      {val:'<em>AI-native</em>',lbl:'Meeting workflow'}
+      {val:'<em>Dominant</em>',lbl:'Leather goods niche'}
     ],
-    viz:'line-up-slow',
-    vizLabel:'PRODUCT',
+    viz:'line-flat-high',
+    vizLabel:'BRAND HOLD',
     drawerStats:[
-      {val:'AI-native',lbl:'Note-taking, transcripts and summaries'},
-      {val:'Integrated',lbl:'Digital + software engagement'}
+      {val:'Dominant',lbl:'Position held in the leather goods niche'},
+      {val:'Full-Stack',lbl:'Service across paid + creative + email'}
     ],
-    services:['Paid Media','Creative Design','Email Marketing'],
-    challenge:"Kodiak Leather wanted to maintain its dominant position in the rugged leather goods niche while driving market expansion and profitable growth.",
-    approach:"At Igloo we've worked closely with the Kodiak team on all paid media channels, creative design and email marketing, tailoring a full-stack service to ensure Kodiak not only remains a dominant player in the leather goods niche, but continues to innovate.",
-    result:"A full-stack growth motion that keeps Kodiak innovating and expanding while holding its dominant position in the premium leather goods category.",
+    services:['Paid Media','Creative','Email'],
+    challenge:"Kodiak Leather wanted to maintain its dominant position in the rugged leather goods niche while driving market expansion and bottom-line growth.",
+    approach:"Igloo worked closely with the Kodiak team across paid media channels, creative design and email marketing — a tailored full-stack service rather than a templated agency playbook, tuned to Kodiak's tone and audience.",
+    result:"Reinforced Kodiak's dominant position in the leather goods niche while opening market expansion and profitability growth in adjacent segments.",
     quote:null
   },
   {
@@ -1022,7 +773,7 @@ const CASES = [
       {val:'Stable',lbl:'CPAs held during aggressive scaling'},
       {val:'Engine',lbl:'Reusable creative system in place'}
     ],
-    services:['TikTok','Meta','Creative Testing','Performance Pillars','Platform-Specific Messaging','Campaign Structure Simplification'],
+    services:['TikTok Ads','Facebook Ads','Creative Testing','Creative Strategy','Account Architecture'],
     challenge:"When they approached Igloo, they were ready to scale across TikTok and Meta but needed a creative engine that could grow spend efficiently without sending CPAs skyrocketing.",
     approach:"We developed tailored creative testing to identify resonant concepts, established performance pillars around education and product science, implemented platform-specific messaging, and simplified campaign structure for cleaner data and easier scaling.",
     result:"Within just three months, Igloo scaled Psyched Wellness's ad spend by 10x, unlocking meaningful growth in both brand awareness and conversions. Even better, the brand now has a stable creative engine that can evolve with the market.",
@@ -1046,7 +797,7 @@ const CASES = [
       {val:'Nationwide',lbl:'Yogi adoption across the US'},
       {val:'Shark Tank',lbl:'Featured product'}
     ],
-    services:['Paid Social','Digital Marketing','Creative Development'],
+    services:['Facebook Ads','Digital Marketing','Creative'],
     challenge:"Existing yoga mats fell short in providing the necessary support, adaptability, and aesthetic appeal for dynamic fitness routines — they lacked the versatility required for intense movements.",
     approach:"Igloo partnered with Stakt to support the brand's growth through paid social, working closely with the founder team to scale demand for a product that finally met the needs of dynamic yoga and fitness routines.",
     result:"Stakt Mats are now cited all over the city, and likewise, around the country for Yogi's looking to upgrade — part of the immense growth we've seen across the 2022–2024 period.",
@@ -1070,7 +821,7 @@ const CASES = [
       {val:'20%',lbl:'New Hampshire primary vote share'},
       {val:'Lead',lbl:'Paid media partner across the campaign'}
     ],
-    services:['Google Ads','Meta Ads','Videography','Animation','Static Creative','Political Ad Compliance'],
+    services:['Google Ads','Facebook Ads','Video Production','Animation','Static Creative','Political Ad Compliance'],
     challenge:"The challenges that come with advertising in this space are always immense, including strategizing ways to both convey the policies and beliefs of the candidate in their plans to lead the nation, and cost-effectively scale a campaign profitably in a short space of time.",
     approach:"Igloo served as Lead Paid Media Specialists, focusing on Google and Meta paid channels while developing videography, animations, and static creative assets compliant with political advertising policies.",
     result:"Dean achieved a 20% vote share in the New Hampshire primary before the campaign withdrew its presidential bid in March 2024 to support President Biden.",
@@ -1095,7 +846,7 @@ const CASES = [
       {val:'+25%',lbl:'Year 2 → Year 3 growth'},
       {val:'+1 channel',lbl:'Google added as core channel'}
     ],
-    services:['Meta','Google','Creative','Brand-Aligned Performance'],
+    services:['Facebook Ads','Google Ads','Creative','Performance Strategy'],
     challenge:"NAOMI NOMI needed to scale a made-to-order apparel brand without losing the intimacy and soul that defined the customer relationship — a tension between performance pressure and brand authenticity.",
     approach:"We've helped NAOMI NOMI scale with intention while keeping the intimacy and soul of the brand intact, expanding into new channels for sustainable long-term revenue development.",
     result:"The partnership drove measurable growth across multiple years and channel expansion, including the rollout of Google as a second core channel.",
@@ -1120,7 +871,7 @@ const CASES = [
       {val:'Profitable',lbl:'Profitability held as a % of sales'},
       {val:'Incremental',lbl:'Meta as incremental sales driver over time'}
     ],
-    services:['Facebook Ads','Google Ads','Creative Design'],
+    services:['Facebook Ads','Google Ads','Creative'],
     challenge:"Muslin Comfort needed help scaling efficiently and reaching new audiences without compromising profitability, in a category where lead time for purchases often fell outside of the standard attribution window.",
     approach:"Partnering with Muslin Comfort, we executed Facebook and Google ad strategies combined with creative design to drive growth. Understanding that lead time for purchases could be outside of the attribution window, we identified that Meta posed a great solution for driving incremental sales over time.",
     result:"Within the first six months, we successfully scaled revenue while maintaining a benchmark ROAS that improved by 30%, while maintaining profitability as a percentage of sales.",
@@ -1168,7 +919,7 @@ const CASES = [
       {val:'2+ years',lbl:'Continuous partnership'},
       {val:'Education',lbl:'Service + professionalism foundation'}
     ],
-    services:['Paid Media','Creative','Education-Led Strategy'],
+    services:['Paid Media','Creative','Education'],
     challenge:"Baking Steel needed a long-term performance partner who could match the brand's craft-led ethos — operating with the same care and quality the product demands.",
     approach:"Igloo has worked with Baking Steel over multiple years as a paid-media partner, treating service, professionalism and customer education as foundational rather than bolted on.",
     result:"A consistent, multi-year growth partnership built on transparent service and category education — the cookware brand's audience continues to deepen rather than churn.",
@@ -1365,7 +1116,8 @@ function renderDrawer(c){
   drawer.scrollTop = 0;
 }
 
-function openDrawer(id){
+let _drawerHistoryPushed = false;
+function openDrawer(id, fromHistory){
   const c = CASES.find(x => x.id === id);
   if(!c) return;
   renderDrawer(c);
@@ -1373,15 +1125,37 @@ function openDrawer(id){
   backdrop.classList.add('is-open');
   drawer.setAttribute('aria-hidden','false');
   document.body.classList.add('locked');
-  history.replaceState(null,'','#'+id);
+  if(!fromHistory){
+    // Push a history entry so browser back closes the drawer instead of navigating away
+    history.pushState({drawer:id}, '', '#'+id);
+    _drawerHistoryPushed = true;
+  }
 }
-function closeDrawer(){
+function closeDrawer(fromHistory){
   drawer.classList.remove('is-open');
   backdrop.classList.remove('is-open');
   drawer.setAttribute('aria-hidden','true');
   document.body.classList.remove('locked');
-  if(location.hash) history.replaceState(null,'',location.pathname);
+  if(_drawerHistoryPushed && !fromHistory){
+    // Pop our pushed history entry so URL goes back to /case-studies.html
+    _drawerHistoryPushed = false;
+    history.back();
+  } else if(!_drawerHistoryPushed && location.hash){
+    history.replaceState(null,'',location.pathname);
+  }
+  _drawerHistoryPushed = false;
 }
+// Browser back/forward: open or close drawer based on hash
+window.addEventListener('popstate', () => {
+  const hashId = location.hash.slice(1);
+  if(hashId && CASES.find(c => c.id === hashId)){
+    // Hash matches a case — open it (came from forward nav)
+    if(!drawer.classList.contains('is-open')) openDrawer(hashId, true);
+  } else {
+    // No matching hash — close drawer if open
+    if(drawer.classList.contains('is-open')) closeDrawer(true);
+  }
+});
 function bindCards(){
   document.querySelectorAll('.cs-card').forEach(card => {
     card.addEventListener('click', e => {

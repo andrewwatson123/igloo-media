@@ -24,7 +24,8 @@
     --max:1320px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{background:var(--paper);color:var(--ink);font-family:'Outfit','DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:clip;}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Outfit','DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;}
+  body{overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;height:auto;}
   em{font-style:italic;font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--ink);}
@@ -46,7 +47,7 @@
 
   /* ----- Hero ----- */
   .hero{position:relative;padding:96px 0 140px;overflow:hidden;background:#0a0e14;color:#fff;}
-  .hero::before{content:'';position:absolute;inset:0;background:url('images/dc-mosaic-bg.png') center/cover no-repeat;opacity:0.55;pointer-events:none;z-index:0;}
+  .hero::before{content:'';position:absolute;inset:0;background:url('/images/dc-mosaic-bg.png') center/cover no-repeat;opacity:0.55;pointer-events:none;z-index:0;}
   .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(10,14,20,0.55) 0%,rgba(10,14,20,0.82) 100%);pointer-events:none;z-index:0;}
   .hero-grid-bg{display:none;}
   .hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 32px;text-align:center;}
@@ -322,7 +323,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg>
     </button>
     <a class="logo" href="/" aria-label="Igloo Media">
-      <img src="images/Igloo Media Logo.PNG" alt="Igloo Media">
+      <img src="/images/igloo-logo.png" alt="Igloo Media">
     </a>
     <ul class="nav-center">
       <li><a href="/">Home</a></li>
@@ -339,7 +340,7 @@
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <div class="nav-drawer-panel">
     <div class="nav-drawer-header">
-      <a class="logo" href="/" aria-label="Igloo Media"><img src="images/Igloo Media Logo.PNG" alt="Igloo Media"></a>
+      <a class="logo" href="/" aria-label="Igloo Media"><img src="/images/igloo-logo.png" alt="Igloo Media"></a>
       <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">×</button>
     </div>
     <ul>
@@ -363,7 +364,7 @@
       <span class="ticker-delta">▲ +0.87%</span>
     </div>
 
-    <img class="hero-dc-icon" src="images/dc-icon-navy.svg" alt="Dollar Commerce">
+    <img class="hero-dc-icon" src="/images/dc-icon-navy.svg" alt="Dollar Commerce">
     <h1 class="hero-h1">E-commerce intelligence,<br>built <em>for the operators.</em></h1>
     <p class="hero-sub">Market data, founder interviews and the daily intelligence brief read by the operators behind some of the fastest-growing brands on the internet.</p>
 
@@ -374,7 +375,7 @@
     <div class="hero-cta-sub">dollarcommerce.co</div>
 
     <a class="hero-byline" href="https://dollarcommerce.co" target="_blank" rel="noopener" title="Andrew Watson — DC Daily">
-      <span class="hero-byline-photo" style="background-image:url('images/Andrew%20headshot.PNG');"></span>
+      <span class="hero-byline-photo" style="background-image:url('/images/andrew-headshot.png');"></span>
       <span class="hero-byline-meta">
         <span class="hero-byline-prefix">Editor</span>
         <span class="hero-byline-name">Andrew Watson</span>
@@ -576,7 +577,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="logo" href="/" aria-label="Igloo Media"><img src="images/Igloo Media Logo.PNG" alt="Igloo Media"></a>
+        <a class="logo" href="/" aria-label="Igloo Media"><img src="/images/igloo-logo.png" alt="Igloo Media"></a>
       </div>
       <div class="foot-col"><h4>Navigate</h4><ul>
         <li><a href="/">Home</a></li>

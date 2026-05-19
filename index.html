@@ -287,12 +287,12 @@
   .dark-block .perf-val{color:#fff;}
 
   /* ----- Testimonials Carousel (trackpad-scrollable) ----- */
-  .tests-section{background:var(--paper-2);contain:layout paint;}
-  /* Promote the testimonials carousel to its own compositing layer so Safari
-     doesn't drop the paint during vertical page scroll. Also switch
-     scroll-snap-type from `mandatory` to `proximity` — Safari has a long-standing
-     bug where mandatory snap-type can blank the contents during repaint. */
-  .tests-carousel{position:relative;margin-top:48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 32px;scroll-snap-type:x proximity;scrollbar-width:thin;cursor:grab;touch-action:pan-x pan-y;user-select:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;}
+  .tests-section{background:var(--paper-2);}
+  /* Borders moved to the wrapper — Safari is unstable repainting overflow:auto
+     containers that also own borders. The wrapper provides a stable paint
+     boundary; the carousel inside handles only the scroll. */
+  .tests-carousel-wrap{position:relative;margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;}
+  .tests-carousel{position:relative;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:24px 32px;scroll-snap-type:x proximity;scrollbar-width:thin;cursor:grab;touch-action:pan-x pan-y;user-select:none;}
   .tests-carousel.is-dragging{cursor:grabbing;scroll-snap-type:none;}
   .tests-carousel a,.tests-carousel img,.tests-track a,.tests-track img{-webkit-user-drag:none;user-drag:none;}
   .process-grid.is-dragging,.cat-grid.is-dragging,.cs-grid.is-dragging{cursor:grabbing;scroll-snap-type:none;}
@@ -309,9 +309,9 @@
   .test-name{font-size:14px;font-weight:600;color:var(--ink);}
   .test-role{font-size:11px;color:var(--muted-2);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;}
   /* fade edges */
-  .tests-carousel::before,.tests-carousel::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
-  .tests-carousel::before{left:0;background:linear-gradient(90deg,var(--paper-2),transparent);}
-  .tests-carousel::after{right:0;background:linear-gradient(270deg,var(--paper-2),transparent);}
+  .tests-carousel-wrap::before,.tests-carousel-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+  .tests-carousel-wrap::before{left:0;background:linear-gradient(90deg,var(--paper-2),transparent);}
+  .tests-carousel-wrap::after{right:0;background:linear-gradient(270deg,var(--paper-2),transparent);}
 
   /* ----- Case study preview — lab card style ----- */
   .cs-section{padding:108px 0 60px;border-bottom:1px solid var(--line-dark);background:var(--ink);color:var(--on-dark);}
@@ -1061,9 +1061,11 @@
     <div class="label-row"><span class="section-label">Testimonials</span><div class="label-line"></div></div>
     <h2 class="section-h2">From the brands<br><em>we operate alongside.</em></h2>
   </div>
-  <div class="tests-carousel">
-    <div class="tests-track" id="testsTrack">
-      <!-- testimonials rendered by JS below -->
+  <div class="tests-carousel-wrap">
+    <div class="tests-carousel">
+      <div class="tests-track" id="testsTrack">
+        <!-- testimonials rendered by JS below -->
+      </div>
     </div>
   </div>
 </section>
@@ -1137,7 +1139,9 @@ const TESTIMONIALS = [
 
 // Carousel interactions: wheel-to-horizontal (desktop) + click-drag (mouse) + native touch swipe (mobile)
 (function(){
-  const carousels = document.querySelectorAll('.process-grid,.cat-grid,.cs-grid,.tests-carousel');
+  // Note: .tests-carousel excluded — let it use native scroll only so Safari
+  // doesn't fight with our scroll listener during vertical page repaints.
+  const carousels = document.querySelectorAll('.process-grid,.cat-grid,.cs-grid');
   const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
   carousels.forEach(el=>{

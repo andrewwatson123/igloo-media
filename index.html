@@ -231,12 +231,12 @@
 
   /* ----- Categories — periodic table with icons ----- */
   .cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:48px;}
-  .cat-tile{position:relative;aspect-ratio:1;padding:16px;border:1px solid var(--line);border-radius:10px;background:#fff;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s,background .2s,transform .2s;cursor:default;}
+  .cat-tile{position:relative;aspect-ratio:1;padding:18px;border:1px solid var(--line);border-radius:12px;background:#fff;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s,background .2s,transform .2s;cursor:default;}
   .cat-tile:hover{border-color:var(--ig-orange);background:rgba(217,119,87,0.04);transform:translateY(-2px);}
-  .cat-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;background:rgba(10,14,20,0.04);align-self:flex-start;}
-  .cat-icon svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-  .cat-sym{font-family:'Outfit',sans-serif;font-size:30px;font-weight:300;letter-spacing:-0.02em;color:var(--ink);align-self:center;margin:0;line-height:1;}
-  .cat-name{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);line-height:1.25;}
+  .cat-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:9px;background:rgba(10,14,20,0.04);align-self:flex-start;}
+  .cat-icon svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .cat-sym{display:none;}
+  .cat-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:500;letter-spacing:-0.01em;text-transform:none;color:var(--ink);line-height:1.22;margin-top:auto;}
   .cat-tile.accent-blue .cat-icon{background:rgba(1,160,243,0.10);}
   .cat-tile.accent-blue .cat-icon svg{stroke:var(--ig-blue);}
   .cat-tile.accent-orange .cat-icon{background:rgba(217,119,87,0.12);}
@@ -287,8 +287,12 @@
   .dark-block .perf-val{color:#fff;}
 
   /* ----- Testimonials Carousel (trackpad-scrollable) ----- */
-  .tests-section{background:var(--paper-2);}
-  .tests-carousel{position:relative;margin-top:48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 32px;scroll-snap-type:x mandatory;scrollbar-width:thin;cursor:grab;touch-action:pan-x pan-y;user-select:none;}
+  .tests-section{background:var(--paper-2);contain:layout paint;}
+  /* Promote the testimonials carousel to its own compositing layer so Safari
+     doesn't drop the paint during vertical page scroll. Also switch
+     scroll-snap-type from `mandatory` to `proximity` — Safari has a long-standing
+     bug where mandatory snap-type can blank the contents during repaint. */
+  .tests-carousel{position:relative;margin-top:48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 32px;scroll-snap-type:x proximity;scrollbar-width:thin;cursor:grab;touch-action:pan-x pan-y;user-select:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;}
   .tests-carousel.is-dragging{cursor:grabbing;scroll-snap-type:none;}
   .tests-carousel a,.tests-carousel img,.tests-track a,.tests-track img{-webkit-user-drag:none;user-drag:none;}
   .process-grid.is-dragging,.cat-grid.is-dragging,.cs-grid.is-dragging{cursor:grabbing;scroll-snap-type:none;}

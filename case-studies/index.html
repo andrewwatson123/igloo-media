@@ -292,8 +292,8 @@
     </a>
     <ul class="nav-center">
       <li><a href="/">Home</a></li>
-      <li><a href="/case-studies.html" class="active">Case Studies</a></li>
-      <li><a href="/dollar-commerce.html">Dollar Commerce</a></li>
+      <li><a href="/case-studies" class="active">Case Studies</a></li>
+      <li><a href="/dollar-commerce">Dollar Commerce</a></li>
     </ul>
     <a class="btn-nav" href="/contact">
       Book a Strategy Call
@@ -310,8 +310,8 @@
     </div>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/case-studies.html" class="active">Case Studies</a></li>
-      <li><a href="/dollar-commerce.html">Dollar Commerce</a></li>
+      <li><a href="/case-studies" class="active">Case Studies</a></li>
+      <li><a href="/dollar-commerce">Dollar Commerce</a></li>
     </ul>
   </div>
 </div>
@@ -431,8 +431,8 @@
       </div>
       <div class="foot-col"><h4>Navigate</h4><ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/case-studies.html">Case Studies</a></li>
-        <li><a href="/dollar-commerce.html">Dollar Commerce</a></li>
+        <li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/dollar-commerce">Dollar Commerce</a></li>
       </ul></div>
       <div class="foot-col"><h4>Partners</h4><ul>
         <li><a href="https://veganorth.co" target="_blank" rel="noopener">Vega North</a></li>
@@ -1137,7 +1137,7 @@ function closeDrawer(fromHistory){
   drawer.setAttribute('aria-hidden','true');
   document.body.classList.remove('locked');
   if(_drawerHistoryPushed && !fromHistory){
-    // Pop our pushed history entry so URL goes back to /case-studies.html
+    // Pop our pushed history entry so URL goes back to /case-studies
     _drawerHistoryPushed = false;
     history.back();
   } else if(!_drawerHistoryPushed && location.hash){

@@ -235,7 +235,9 @@
   .nav-drawer a.active{color:var(--ig-blue);}
 
   /* ---------- Strategy Call Modal ---------- */
-  .sc-overlay{position:fixed;inset:0;background:rgba(10,14,20,0.65);z-index:300;opacity:0;pointer-events:none;transition:opacity .35s;backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px;}
+  .sc-overlay{position:fixed;inset:0;background:rgba(10,14,20,0.65);z-index:300;opacity:0;pointer-events:none;transition:opacity .35s,visibility 0s linear .35s;backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px;visibility:hidden;}
+  .sc-overlay.is-open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity .35s;}
+  .sc-overlay[aria-hidden="true"] *{pointer-events:none !important;}
   .sc-overlay.is-open{opacity:1;pointer-events:auto;}
   .sc-modal{position:relative;width:min(640px,100%);max-height:min(90vh,820px);background:#fff;border-radius:20px;box-shadow:0 24px 64px rgba(10,14,20,0.25),0 4px 12px rgba(10,14,20,0.1);overflow:hidden;transform:translateY(20px) scale(0.98);transition:transform .35s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;}
   .sc-overlay.is-open .sc-modal{transform:translateY(0) scale(1);}
@@ -498,8 +500,10 @@
     }
     return true;
   }
-  function open(){idx=0;render();overlay.classList.add('is-open');overlay.setAttribute('aria-hidden','false');document.body.classList.add('sc-locked');}
-  function shut(){overlay.classList.remove('is-open');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('sc-locked');}
+  function setModalFocusable(f){overlay.querySelectorAll('input,select,textarea,button,a').forEach(el=>{if(f){el.removeAttribute('tabindex');el.removeAttribute('inert');}else{el.setAttribute('tabindex','-1');el.setAttribute('inert','');}});}
+  function open(){idx=0;render();overlay.classList.add('is-open');overlay.setAttribute('aria-hidden','false');setModalFocusable(true);document.body.classList.add('sc-locked');}
+  function shut(){overlay.classList.remove('is-open');overlay.setAttribute('aria-hidden','true');setModalFocusable(false);document.body.classList.remove('sc-locked');}
+  setModalFocusable(false);
   const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
   function collectFormData(){
     const data = {};
